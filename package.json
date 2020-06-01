@@ -1,6 +1,6 @@
 {
   "name": "vue-segment-slider",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Segmented slider for vuejs",
   "main": "dist/main.js",
   "directories": {

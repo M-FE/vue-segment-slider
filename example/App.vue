@@ -1,8 +1,17 @@
 <template>
-    <Slider
-        :defaultValue="1000"
-        :segments="segments"
-    />
+    <div>
+        <h2>基础用法</h2>
+        <Slider
+            :defaultValue="1000"
+            :segments="segments"
+        />
+        <h2>禁用</h2>
+        <Slider
+            :defaultValue="1000"
+            :segments="segments"
+            :disabled="true"
+        />
+    </div>
 </template>
 
 <script>

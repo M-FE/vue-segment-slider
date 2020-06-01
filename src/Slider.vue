@@ -65,6 +65,10 @@ export default {
         popoverClassname: {
             type: [String, Array, Object],
             default: ''
+        },
+        disabled: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -119,6 +123,10 @@ export default {
 
     methods: {
         mousedown () {
+            if (this.disabled) {
+                return;
+            }
+
             const rect = this.$refs.inner.getBoundingClientRect();
 
             this.move = {
@@ -128,7 +136,7 @@ export default {
             this.popoverAnimationClass = null;
         },
         mousemove (e) {
-            if (!this.move) {
+            if (!this.move || this.disabled) {
                 return;
             }
 
@@ -263,12 +271,19 @@ export default {
             actualMax,
             subscriptVisible,
             popoverAnimationClass,
-            popoverClassname
+            popoverClassname,
+            disabled
         } = this;
 
         return (
             <div class="m-segment-slider" data-test="slider-container">
-                <div class="m-segment-inner" style={ styleInner } ref="inner" data-test="slider-inner" onClick={ (e) => this.innerClick(e) }>
+                <div
+                    class={['m-segment-inner', disabled && 'disabled']}
+                    style={ styleInner }
+                    ref="inner"
+                    data-test="slider-inner"
+                    onClick={ (e) => this.innerClick(e) }
+                >
                     {
                         this.actualSegments.map(s => (
                             <div class="segment-item" data-test="segment" style={ styleSegment(s) }></div>
@@ -284,12 +299,20 @@ export default {
                 {
                     value !== undefined && (
                         <div
-                            class={['slider-popover', popoverAnimationClass, popoverClassname]}
+                            class={[
+                                'slider-popover',
+                                popoverAnimationClass,
+                                popoverClassname,
+                                disabled && 'disabled'
+                            ]}
                             style={stylePopover}
                             data-test="slider-popover"
-                            onMousedown={ (e) => this.mousedown(e) }
                         >
-                            <span class="popover-value" style={stylePopoverValue}>{ value }</span>
+                            <span
+                                class="popover-value"
+                                style={stylePopoverValue}
+                                onMousedown={ (e) => this.mousedown(e) }
+                            >{ value }</span>
                             <i class="popover-divider"></i>
                         </div>
                     )
@@ -307,6 +330,7 @@ export default {
 
 <style lang="scss" scoped>
 $color: #1d2a33;
+$color-disabled: rgba($color, .65);
 
 .m-segment-slider {
     position: relative;
@@ -315,6 +339,10 @@ $color: #1d2a33;
         position: relative;
         cursor: pointer;
         background-color: #f3f5f7;
+
+        &.disabled {
+            cursor: default;
+        }
     }
 
     .segment-item {
@@ -331,6 +359,21 @@ $color: #1d2a33;
 
         &.animation {
             transition: all 0.3s;
+        }
+
+        &.disabled {
+            .popover-value {
+                background-color: $color-disabled;
+                cursor: not-allowed;
+
+                &:after {
+                    border-color: $color-disabled transparent transparent;
+                }
+            }
+
+            .popover-divider {
+                border-right-color: $color-disabled;
+            }
         }
 
         .popover-value {

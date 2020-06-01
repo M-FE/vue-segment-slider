@@ -98,3 +98,7 @@ const DEFAULT_TYPES = {
 - **`popoverClassname: `** `String|Array|Object`
 
 用于设置气泡的类名。
+
+- **`disabled: `** `Boolean`
+
+是否禁用。默认值：`false`。

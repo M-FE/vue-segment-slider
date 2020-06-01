@@ -1,0 +1,88 @@
+{
+  "name": "vue-segment-slider",
+  "version": "0.0.1",
+  "description": "Segmented slider for vuejs",
+  "main": "main.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --color --config ./webpack.dev.conf",
+    "build": "webpack --config ./webpack.prod.conf",
+    "test": "jest",
+    "lint": "eslint -c ./.eslintrc.js ./src --ext .js,.vue ./example --ext .js,.vue -f table --fix"
+  },
+  "keywords": [
+    "vuejs",
+    "slider",
+    "segment"
+  ],
+  "files": [
+    "./dist"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/helper-module-imports": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@types/jest": "^25.1.5",
+    "@vue/test-utils": "^1.0.0-beta.32",
+    "astroturf": "^0.10.2",
+    "autoprefixer": "^9.7.4",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-jest": "^25.2.6",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-loader": "^3.0.4",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "file-loader": "^6.0.0",
+    "happypack": "^5.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.2.5",
+    "jest": "^25.2.6",
+    "jest-serializer-vue": "^2.0.2",
+    "jest-transform-stub": "^2.0.0",
+    "jest-watch-typeahead": "^0.5.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "terser-webpack-plugin": "^2.3.5",
+    "vue-jest": "^3.0.5",
+    "vue-loader": "^15.9.0",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
+  },
+  "peerDependencies": {
+    "vue": ">=2.0.0",
+    "babel-core": "6.x || ^7.0.0-bridge.0"
+  },
+  "dependencies": {
+    "vue": "^2.6.11"
+  },
+  "author": "Willem Wei <willemwei023@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/M-FE/vue-segment-slider/issues"
+  },
+  "homepage": "https://github.com/M-FE/vue-segment-slider#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint & npm run test"
+    }
+  }
+}

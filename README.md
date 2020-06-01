@@ -26,7 +26,7 @@ yarn add vue-segment-slider
 </template>
 
 <script>
-import { Slider } from "../src/main";
+import { Slider } from "vue-segment-slider";
 
 export default {
     data() {

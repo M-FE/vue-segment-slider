@@ -1,4 +1,4 @@
-## Vue WeChat PC
+## Vue Segment Slider
 [![NPM version](https://img.shields.io/npm/v/vue-segment-slider.svg?style=flat)](https://npmjs.com/package/vue-segment-slider)
 [![NPM downloads](https://img.shields.io/npm/dm/vue-segment-slider.svg?style=flat)](https://npmjs.com/package/vue-segment-slider)
 > 用于分片段、颜色显示的滑动输入条。

@@ -119,27 +119,6 @@ describe('Slider', () => {
         });
     });
 
-    // it('popover被拖动时，实时计算popover的值', (done) => {
-    //     const wrapper = shallowMount(Slider, {
-    //         propsData: {
-    //             segments: segmentsArr,
-    //             defaultValue: 100
-    //         }
-    //     });
-
-    //     const popover = find(wrapper, 'slider-popover');
-
-    //     popover.trigger('mousedown');
-    //     popover.trigger('mousemove', { screenX: 30 });
-
-    //     wrapper.vm.$nextTick(() => {
-    //         console.log(wrapper.emitted().change);
-    //         // console.log(wrapper.vm.value);
-    //         // expect(wrapper.vm.value).toBe();
-    //         done();
-    //     });
-    // });
-
     it('横线段点击时，触发value修改', (done) => {
         const wrapper = shallowMount(Slider, {
             propsData: {
@@ -149,14 +128,13 @@ describe('Slider', () => {
         });
 
         const inner = find(wrapper, 'slider-inner');
-        inner.trgger('click', {
+        inner.trigger('click', {
             screenX: 500
         });
 
         wrapper.vm.$nextTick(() => {
-            console.log(wrapper.emitted().change);
-            // console.log(wrapper.vm.value);
-            // expect(wrapper.vm.value).toBe();
+            expect(wrapper.emitted().change[0]).toEqual([200]);
+            expect(wrapper.vm.value).toEqual(200);
             done();
         });
     });

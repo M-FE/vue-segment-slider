@@ -307,11 +307,11 @@ export default {
                             ]}
                             style={stylePopover}
                             data-test="slider-popover"
+                            onMousedown={ (e) => this.mousedown(e) }
                         >
                             <span
                                 class="popover-value"
                                 style={stylePopoverValue}
-                                onMousedown={ (e) => this.mousedown(e) }
                             >{ value }</span>
                             <i class="popover-divider"></i>
                         </div>

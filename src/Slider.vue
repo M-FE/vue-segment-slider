@@ -108,7 +108,7 @@ export default {
         },
         /* value所占据的比例 */
         valuePercent () {
-            return this._computePosition(this.value);
+            return this._computePosition(this.value - this.actualMin);
         },
         styleInner () {
             return { height: this.height + 'px' };
@@ -171,8 +171,8 @@ export default {
             const { color, zIndex, min, max } = item;
 
             return {
-                left: this._computePosition(min),
-                width: this._computePosition(max),
+                left: this._computePosition(min - this.actualMin),
+                width: this._computePosition(max - min),
                 backgroundColor: color,
                 zIndex: zIndex
             };
@@ -185,7 +185,7 @@ export default {
         _computePosition (value) {
             const { actualMin: min, actualMax: max } = this;
 
-            return ((value - min) / (max - min)) * 100 + '%';
+            return (value / (max - min)) * 100 + '%';
         },
         /**
          * 传入数组segments，生成实际使用的segments的数据
